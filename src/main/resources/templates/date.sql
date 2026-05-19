@@ -1,0 +1,1 @@
+INSERT INTO events(id,mets, name ) VALUES(1,4, 'プランク');
