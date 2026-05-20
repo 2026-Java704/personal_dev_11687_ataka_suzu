@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
 </head>
+
 <body>
 	<header th:replace="~{header}"></header>
 	<hr>
 	<main>
 		<span th:text="${@account.name}+' さんこんにちは‼'"></span>
-		<form action="/insert" method="get">
-		<table border="1">
-		<tr>
-			<th>日付</th>
-			<th>種目</th>
-			<th>時間</th>
-			<th>体重</th>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		
+		<form action="/records/add" method="get">
+			<table border="1">
+				<tr>
+					<th>日付</th>
+					<th>種目</th>
+					<th>時間</th>
+					<th>体重</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="date" name="Date"><br>
+					</td>
+					<td >プランク</td>
+					<td>
+						<input type="text" name="time">分<br>
+					</td>
+					<td>
+						<input type="text" name="weight">kg<br>
+					</td>
+				</tr>
+
 	</main>
+	</table>
 	<button>ENTER!!!</button>
 </body>
+
 </html>

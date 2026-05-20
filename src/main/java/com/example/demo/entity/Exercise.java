@@ -26,15 +26,14 @@ public class Exercise {
 	public Exercise() {
 	}
 
-	public Exercise(Integer id, Integer userId, Integer eventId, Date date, Integer time, Integer burn_calorie,
-			String memo) {
+	public Exercise(Integer id, Integer userId, Date date, Integer time) {
 		this.id = id;
 		this.userId = userId;
-		this.eventId = eventId;
+		//this.eventId = eventId;
 		this.date = date;
 		this.time = time;
-		this.burn_calorie = burn_calorie;
-		this.memo = memo;
+		//this.burn_calorie = burn_calorie;
+		//this.memo = memo;
 	}
 
 	public Integer getId() {

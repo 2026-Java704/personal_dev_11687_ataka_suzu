@@ -1,3 +1,8 @@
+-- 各種テーブル削除
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS exercise_records;
+
 -- ユーザーテーブル
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
