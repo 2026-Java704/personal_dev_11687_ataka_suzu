@@ -11,11 +11,30 @@ import jakarta.persistence.Table;
 public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String name;
 	private String password;
+	//	private Integer age;
+	//	private Integer gender;
+	//	private Integer weight;
+
+	public Users() {
+	}
 
 	public Users(String name, String password) {
 		this.name = name;
+		this.password = password;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -27,4 +46,21 @@ public class Users {
 		return password;
 	}
 
+	public Integer getId() {
+		return id;
+	}
 }
+
+//	public Integer getAge() {
+//		return age;
+//	}
+//
+//	public Integer getGender() {
+//		return gender;
+//	}
+//
+//	public Integer getWeight() {
+//		return weight;
+//	}
+//
+//}

@@ -23,6 +23,20 @@ public class Exercise {
 	private Integer burn_calorie;
 	private String memo;
 
+	public Exercise() {
+	}
+
+	public Exercise(Integer id, Integer userId, Integer eventId, Date date, Integer time, Integer burn_calorie,
+			String memo) {
+		this.id = id;
+		this.userId = userId;
+		this.eventId = eventId;
+		this.date = date;
+		this.time = time;
+		this.burn_calorie = burn_calorie;
+		this.memo = memo;
+	}
+
 	public Integer getId() {
 		return id;
 	}
