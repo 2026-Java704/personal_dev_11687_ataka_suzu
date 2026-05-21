@@ -11,98 +11,130 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Events;
 import com.example.demo.entity.Users;
 import com.example.demo.model.Account;
+import com.example.demo.repository.EventsRepository;
 import com.example.demo.repository.UsersRepository;
 
 @Controller
 public class UserController {
-	private final HttpSession session;
-	private final UsersRepository usersRepository;
-	private final Account account;
 
-	public UserController(HttpSession session,
-			UsersRepository usersRepository,
-			Account account) {
+	private HttpSession session = null;
+	private Account account = new Account();
+	private UsersRepository usersRepository = null;
+	private EventsRepository eventsRepository = null;
+
+	public UserController(HttpSession session, Account account, UsersRepository usersRepository,
+			EventsRepository eventsRepository) {
 		this.session = session;
-		this.usersRepository = usersRepository;
 		this.account = account;
+		this.usersRepository = usersRepository;
+		this.eventsRepository = eventsRepository;
 	}
 
-	//ログイン画面
-	@GetMapping({ "/", "/login" })
+	@GetMapping({ "/", "/login", "/logout" })
 	public String index() {
 		session.invalidate();
-
 		return "login";
 	}
 
-	//ログインを実行
+	@PostMapping("/logout")
+	public String logout() {
+		session.invalidate();
+		return "redirect:/login";
+	}
+
 	@PostMapping("/login")
-	public String login(
-			@RequestParam String name,
-			@RequestParam String password,
-			Model model) {
-
-		//名前が空の場合エラー
-		if (name.length() == 0 || password.length() == 0) {
+	public String login(@RequestParam String name, @RequestParam String password, Model model) {
+		String trimmedName = name.trim();
+		if (trimmedName.isEmpty() || password.isEmpty()) {
 			model.addAttribute("message", "入力してください");
+			model.addAttribute("name", trimmedName);
 			return "login";
 		}
 
-		List<Users> userList = usersRepository.findByNameAndPassword(name, password);
-		if (userList == null || userList.size() == 0) {
+		List<Users> userList = usersRepository.findByNameAndPassword(trimmedName, password);
+		if (userList.isEmpty()) {
 			model.addAttribute("message", "名前とパスワードが一致しませんでした");
+			model.addAttribute("name", trimmedName);
 			return "login";
 		}
-		Users users = userList.get(0);
 
-		account.setId(users.getId());
-		account.setName(users.getName());
+		Users user = userList.get(0);
+		account.setId(user.getId());
+		account.setName(user.getName());
+
 		return "redirect:/records/add";
 	}
 
-	//新規会員登録
 	@GetMapping("/users/new")
 	public String create() {
-		return "newlogin";
+		return "users";
 	}
 
-	//登録ボタンをクリックしたときの処理
 	@PostMapping("/users/add")
-	public String add(
-			@RequestParam String name,
-			@RequestParam String password,
-			Model model) {
-
-		// エラーチェック
+	public String add(@RequestParam String name, @RequestParam String password, Model model) {
+		String trimmedName = name.trim();
 		List<String> errorList = new ArrayList<>();
-		if (name.length() == 0) {
+		if (trimmedName.isEmpty()) {
 			errorList.add("名前は必須です");
 		}
-		if (password.length() == 0) {
+		if (password.isEmpty()) {
 			errorList.add("パスワードは必須です");
 		}
-		// 名前、パスワード存在チェック
-		List<Users> userList = usersRepository.findByNameAndPassword(name, password);
-		if (userList != null && userList.size() > 0) {
-			// 登録済みのメールアドレスが存在した場合
-			errorList.add("登録済みの名前、パスワードです");
+		if (!trimmedName.isEmpty() && usersRepository.existsByName(trimmedName)) {
+			errorList.add("その名前は既に登録されています");
 		}
 
-		// エラー発生時はお問い合わせフォームに戻す
-		if (errorList.size() > 0) {
+		if (!errorList.isEmpty()) {
 			model.addAttribute("errorList", errorList);
-			model.addAttribute("name", name);
-			model.addAttribute("password", password);
-			return "newlogin";
+			model.addAttribute("name", trimmedName);
+			return "users";
 		}
 
-		Users user = new Users(name, password);
+		Users user = new Users(trimmedName, password);
 		usersRepository.save(user);
+		addDefaultEvents(user.getId());
 
 		return "redirect:/login";
-
 	}
 
+	private void addDefaultEvents(Integer userId) {
+		Events event1 = new Events();
+		event1.setUserId(userId);
+		event1.setName("プランク");
+		event1.setMets(4.0);
+		eventsRepository.save(event1);
+
+		Events event2 = new Events();
+		event2.setUserId(userId);
+		event2.setName("ブルガリアンスクワット");
+		event2.setMets(7.0);
+		eventsRepository.save(event2);
+
+		Events event3 = new Events();
+		event3.setUserId(userId);
+		event3.setName("スクワット");
+		event3.setMets(5.0);
+		eventsRepository.save(event3);
+
+		Events event4 = new Events();
+		event4.setUserId(userId);
+		event4.setName("縄跳び");
+		event4.setMets(9.0);
+		eventsRepository.save(event4);
+
+		Events event5 = new Events();
+		event5.setUserId(userId);
+		event5.setName("腕立て伏せ");
+		event5.setMets(4.0);
+		eventsRepository.save(event5);
+
+		Events event6 = new Events();
+		event6.setUserId(userId);
+		event6.setName("腹筋");
+		event6.setMets(4.0);
+		eventsRepository.save(event6);
+	}
 }

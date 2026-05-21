@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,29 +11,43 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "exercise_records")
-public class Exercise {
+public class Exercise_records {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	@Column(name = "user_id")
 	private Integer userId;
+
+	@Column(name = "event_id")
 	private Integer eventId;
-	private Date date;
+
+	private LocalDate date;
+
 	private Integer time;
-	private Integer burn_calorie;
+
+	private Double weight;
+
+	@Column(name = "burn_calorie")
+	private Double burnCalorie;
+
+	private Integer progress;
+
 	private String memo;
 
-	public Exercise() {
+	public Exercise_records() {
 	}
 
-	public Exercise(Integer id, Integer userId, Date date, Integer time) {
-		this.id = id;
+	public Exercise_records(Integer userId, Integer eventId, LocalDate date, Integer time, Double weight,
+			Double burnCalorie, Integer progress, String memo) {
 		this.userId = userId;
-		//this.eventId = eventId;
+		this.eventId = eventId;
 		this.date = date;
 		this.time = time;
-		//this.burn_calorie = burn_calorie;
-		//this.memo = memo;
+		this.weight = weight;
+		this.burnCalorie = burnCalorie;
+		this.progress = progress;
+		this.memo = memo;
 	}
 
 	public Integer getId() {
@@ -60,11 +74,11 @@ public class Exercise {
 		this.eventId = eventId;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
@@ -76,12 +90,28 @@ public class Exercise {
 		this.time = time;
 	}
 
-	public Integer getBurn_calorie() {
-		return burn_calorie;
+	public Double getWeight() {
+		return weight;
 	}
 
-	public void setBurn_calorie(Integer burn_calorie) {
-		this.burn_calorie = burn_calorie;
+	public void setWeight(Double weight) {
+		this.weight = weight;
+	}
+
+	public Double getBurnCalorie() {
+		return burnCalorie;
+	}
+
+	public void setBurnCalorie(Double burnCalorie) {
+		this.burnCalorie = burnCalorie;
+	}
+
+	public Integer getProgress() {
+		return progress;
+	}
+
+	public void setProgress(Integer progress) {
+		this.progress = progress;
 	}
 
 	public String getMemo() {
@@ -91,5 +121,4 @@ public class Exercise {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
-
 }

@@ -7,25 +7,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users")
-public class Users {
+@Table(name = "events")
+public class Events {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private String name; // 名前
+	private Integer userId;
 
-	private String password; // パスワード
+	private String name;
 
-	//	private Double weight; //体重
+	private Double mets;
 
-	// コンストラクタ
-	public Users() {
+	public Events() {
 	}
 
-	public Users(String name, String password) {
+	public Events(String name, Double mets) {
 		this.name = name;
-		this.password = password;
+		this.mets = mets;
 	}
 
 	public Integer getId() {
@@ -36,6 +35,14 @@ public class Users {
 		this.id = id;
 	}
 
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -44,12 +51,11 @@ public class Users {
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
+	public Double getMets() {
+		return mets;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setMets(Double mets) {
+		this.mets = mets;
 	}
-
 }

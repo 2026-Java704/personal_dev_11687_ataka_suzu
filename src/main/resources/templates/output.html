@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>過去の記録</title>
+	<title>カロリー出力</title>
 </head>
 
 <body>
@@ -18,29 +18,20 @@
 				<th>種目</th>
 				<th>時間</th>
 				<th>体重</th>
-				<th>消費カロリー</th>
-				<th>更新</th>
 			</tr>
-			<tr th:each="record : ${records}">
+			<tr>
 				<td th:text="${record.date}"></td>
-				<td>
-					<span th:each="event : ${events}">
-						<span th:if="${event.id == record.eventId}" th:text="${event.name}"></span>
-					</span>
-				</td>
+				<td th:text="${eventName}"></td>
 				<td th:text="${record.time + ' 分'}"></td>
 				<td th:text="${record.weight + ' kg'}"></td>
-				<td th:text="${'約 ' + record.burnCalorie + 'kcal '}"></td>
-				<td>
-					<form th:action="@{/past/{pastId}/edit(pastId=${record.id})}" method="get">
-						<button>更新</button>
-					</form>
-				</td>
 			</tr>
 		</table>
-		<p><a href="/records/add">入力画面へ戻る</a></p>
+		<p th:text="${@account.name} + 'さんの消費カロリーは、約' + ${record.burnCalorie} + 'kcalです！'"></p>
+		<p><a href="/records/add">入力画面に戻る</a></p>
+		<p><a href="/past">過去の記録を見る</a></p>
 
 	</main>
+
 </body>
 
 </html>
