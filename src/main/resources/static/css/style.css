@@ -1,15 +1,16 @@
 /* 全体 */
 body {
-	background-color: #EFF0F7; /* 背景色  */
+	background-color:rgb(255, 255, 255); /* 背景色  */
 	text-align: center; /* 中央寄せ */
     min-width: 900px; /* 最小幅 */
 }
 /* ヘッダー、ナビゲーションメニュー、フッター */
 header, nav, footer {
-	background-color: #45496a; /* 背景色 */
+	background-color:#7d8bae; /* 背景色 */
 	color: #ffffff; /* 文字色 */
-	padding-top: 5px; /* 内側余白(上) */
-	padding-bottom: 5px; /* 内側余白(下) */
+	padding-top: 5px;  /*内側余白(上) */
+	padding-bottom: 5px;  /*内側余白(下) */
+
 }
 /* ヘッダー、ナビゲーション内リンク */
 header a, nav a {
@@ -26,7 +27,7 @@ hr {
 }
 /* メイン */
 main {
-	background-color: #FFFFFF;
+	background-color:rgb(255, 255, 255);
 	min-height: 50px;
 	padding: 20px;
 }
@@ -49,7 +50,7 @@ table th {
 button {
 	margin: 2px;
 	padding: 5px 20px;
-	background-color: #e5857b;
+	background-color: rgb(128, 255, 128);
 	color: #ffffff;
 	border: none;
 	width:150px;
@@ -57,7 +58,7 @@ button {
 }
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
-	background-color: #f1b2b2;
+	background-color:#7d8bae;
 }
 
 /* エラーメッセージ*/
@@ -66,3 +67,62 @@ ul.error{
 	list-style: none;
 	padding-left: 0;
 }
+
+/* ヘッダー全体を中央寄せの基準にする */
+.header {
+  display: flex;
+  justify-content: center; /* タイトルを正確に真ん中へ */
+  align-items: center;
+  position: relative;      /* ログアウトボタンを右端に浮かせる基準 */
+  padding-left: 20px;      /* 左右の余白を確保 */
+  padding-right: 20px;
+}
+
+/* タイトルの余白をリセット（既存の header h1 を上書き） */
+.header .header-title {
+  margin: 10px 0;          /* 左右の auto を 0 にしてズレを防止 */
+}
+
+/* ログアウトフォームを右端に固定 */
+.logout-form {
+  position: absolute;
+  right: 20px;             /* 右端からの距離 */
+  margin: 0;
+}
+
+/* ログアウトボタン専用のデザイン（共通の button 設定を上書き） */
+.header .logout-button {
+  background: none;        /* ピンクの背景を消す */
+  border: none;
+  color: #ffffff;          /* 文字を白にする */
+  width: auto;             /* 幅150pxを解除して文字幅に合わせる */
+  padding: 0;              /* 内側の余白をリセット */
+  cursor: pointer;
+  text-decoration: underline; /* 下線をつける */
+}
+
+/* ログアウトボタンのマウスオーバー時（共通の hover 設定を上書き） */
+.header .logout-button:hover {
+  background: none;        /* ホバー時にピンクになるのを防ぐ */
+  opacity: 0.8;            /* 少し透明にしてクリックできる感を出す */
+}
+
+/* 名前とパスワードの入力欄を横長にする */
+input[type="text"], 
+input[type="password"] {
+  font-size: 16px;
+  padding: 10px 15px;
+  width: 300px;             /* ★ここを 300px にして横長にしました */
+  max-width: 100%;          /* 画面からはみ出るのを防ぐ */
+  box-sizing: border-box;
+  border: 1px solid #7d8bae;
+  border-radius: 4px;
+}
+
+/* 入力欄にカーソルが当たったときの変化 */
+input[type="text"]:focus, 
+input[type="password"]:focus {
+  outline: 2px solid #7d8bae; /* クリックしたときに枠線を強調する */
+  background-color: #f7f9fc;  /* ほんのり背景色を変える */
+}
+

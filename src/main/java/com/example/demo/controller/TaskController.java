@@ -128,7 +128,7 @@ public class TaskController {
 		exercise_records.setDate(date);
 		exercise_records.setTime(time);
 		exercise_records.setWeight(weight);
-		exercise_records.setBurnCalorie(roundedCalorie); // 計算したカロリーをセット
+		exercise_records.setBurnCalorie(roundedCalorie);
 
 		exerciseRecordsRepository.save(exercise_records);
 		return "redirect:/past";
