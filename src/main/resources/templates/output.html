@@ -12,22 +12,34 @@
 
 	<main>
 		<hr>
-		<h3><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
-		<table border="1">
+		<h3 style="text-align: center;"><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
+
+
+		<table border="1" class="data-table">
 			<tr>
 				<th>日付</th>
 				<th>種目</th>
 				<th>時間</th>
 				<th>体重</th>
+				<th>感想</th>
 			</tr>
 			<tr>
 				<td th:text="${record.date}"></td>
 				<td th:text="${eventName}"></td>
 				<td th:text="${record.time + ' 分'}"></td>
 				<td th:text="${record.weight + ' kg'}"></td>
+				<td th:text="${record.memo}"></td>
 			</tr>
 		</table>
-		<p th:text="${@account.name} + 'さんの消費カロリーは、約' + ${record.burnCalorie} + 'kcalです！'"></p>
+
+
+		<div
+			style="background: rgba(125, 139, 174, 0.1); padding: 15px; border-radius: 8px; text-align: center; margin: 1.5rem 0;">
+			<p th:text=" '約' + ${record.burnCalorie} + 'kcal消費しました！'"
+				style="margin: 0; font-size: 16px; font-weight: bold; color: #4a5568;"></p>
+		</div>
+		<h5>※消費カロリー(kcal) ＝ メッツ * 体重kg * 運動時間 * 1.05</h5>
+
 		<p><a href="/records/add">入力画面に戻る</a></p>
 		<p><a href="/past">過去の記録を見る</a></p>
 

@@ -24,7 +24,7 @@ CREATE TABLE exercise_records (
     event_id INTEGER NOT NULL,
     date DATE NOT NULL,
     time INTEGER NOT NULL,
-    burn_calorie NUMERIC(6,1) NOT NULL,
+    burn_calorie NUMERIC(50,1) NOT NULL,
     weight NUMERIC(5,1) NOT NULL,
     progress INTEGER DEFAULT 0,
     memo TEXT,

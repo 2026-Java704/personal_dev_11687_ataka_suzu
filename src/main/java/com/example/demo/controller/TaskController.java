@@ -90,6 +90,17 @@ public class TaskController {
 
 		model.addAttribute("events", events);
 		model.addAttribute("records", records);
+
+		double totalCalorie = 0.0;
+		for (Exercise_records record : records) {
+			if (record.getBurnCalorie() != null) {
+				totalCalorie += record.getBurnCalorie();
+			}
+		}
+
+		double roundedTotal = Math.round(totalCalorie * 10.0) / 10.0;
+		model.addAttribute("totalCalorie", roundedTotal);
+
 		return "past";
 	}
 
@@ -114,7 +125,8 @@ public class TaskController {
 			@RequestParam(defaultValue = "") Integer eventId,
 			@RequestParam(defaultValue = "") LocalDate date,
 			@RequestParam(defaultValue = "") Integer time,
-			@RequestParam(defaultValue = "") Double weight) { // burnCalorieの引数を削除
+			@RequestParam(defaultValue = "") Double weight,
+			@RequestParam(defaultValue = "") String memo) {
 
 		Exercise_records exercise_records = exerciseRecordsRepository.findById(id).get();
 
@@ -129,8 +141,21 @@ public class TaskController {
 		exercise_records.setTime(time);
 		exercise_records.setWeight(weight);
 		exercise_records.setBurnCalorie(roundedCalorie);
+		exercise_records.setMemo(memo.trim());
 
 		exerciseRecordsRepository.save(exercise_records);
+		return "redirect:/past";
+	}
+
+	@PostMapping("/past/{id}/delete")
+	public String delete(@PathVariable Integer id) {
+		exerciseRecordsRepository.deleteById(id);
+		return "redirect:/past";
+	}
+
+	@PostMapping("/past/alldelete")
+	public String deleteall() {
+		exerciseRecordsRepository.deleteAllInBatch();
 		return "redirect:/past";
 	}
 }

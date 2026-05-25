@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>種目一覧</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<header th:replace="~{sporttitle}"></header>
+
+	<main th:if="${!sportsList.isEmpty()}">
+		<hr>
+		<h2 style="text-align: center; margin-top: 0; margin-bottom: 2rem; color: #333; font-weight: 600;">種目・メッツ一覧
+		</h2>
+
+
+		<table border="1" class="data-table">
+			<tr>
+				<th>写真</th>
+				<th>種目名</th>
+				<th>メッツ (METs)</th>
+			</tr>
+			<tr th:each="sport : ${sportsList}">
+
+				<td style="text-align: center; vertical-align: middle; padding: 10px;">
+
+					<img th:src="@{/images/{name}.jpg(name=${sport.name})}"
+					     onerror="this.style.display='none';"
+					     style="max-width: 100px; max-height: 80px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: block; margin: 0 auto;">
+					
+				</td>
+				<td th:text="${sport.name}" style="vertical-align: middle; font-weight: 600;"></td>
+				<td th:text="${sport.mets}" style="vertical-align: middle;"></td>
+			</tr>
+		</table>
+
+		<p><a href="/records/add">入力画面へ戻る</a></p>
+	</main>
+</body>
+
+</html>

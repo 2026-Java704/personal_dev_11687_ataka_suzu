@@ -1,128 +1,197 @@
-/* 全体 */
 body {
-	background-color:rgb(255, 255, 255); /* 背景色  */
-	text-align: center; /* 中央寄せ */
-    min-width: 900px; /* 最小幅 */
+	background-color: #f4f6f9;
+	margin: 0;
+	font-family: sans-serif;
+	color: #333;
 }
-/* ヘッダー、ナビゲーションメニュー、フッター */
-header, nav, footer {
-	background-color:#7d8bae; /* 背景色 */
-	color: #ffffff; /* 文字色 */
-	padding-top: 5px;  /*内側余白(上) */
-	padding-bottom: 5px;  /*内側余白(下) */
 
-}
-/* ヘッダー、ナビゲーション内リンク */
-header a, nav a {
-	color: #ffffff;
-}
-/* ヘッダー内見出し */
-header h1 {
-	font-size: 20pt;
-	margin: 10px auto;
-}
-/* 仕切り線 */
-hr {
-	border-top: 2px dashed #7d8bae;
-}
-/* メイン */
 main {
-	background-color:rgb(255, 255, 255);
-	min-height: 50px;
-	padding: 20px;
+	max-width: 850px;
+	margin: 2rem auto;
+	padding: 0 1rem;
 }
-/* 表線 */
-table, th, td {
-	border-collapse: collapse;
-	border: 1px solid #7d8bae;
+
+h3,
+h2,
+main h3 {
+	text-align: center;
+	color: #333;
+	font-weight: 600;
 }
-/* 表 */
-table {
-    margin: 5px auto;
-    min-width: 800px;
-}
-/* 表見出しセル */
-table th {
-	background: #7d8bae;
-	color: #ffffff;
-}
-/* 送信ボタン */
-button {
-	margin: 2px;
-	padding: 5px 20px;
-	background-color: rgb(128, 255, 128);
-	color: #ffffff;
+
+hr {
 	border: none;
-	width:150px;
+	border-top: 2px solid #e1e5e9;
+	margin-bottom: 1.5rem;
+}
+
+.form-card {
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 2rem;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+	display: block;
+	box-sizing: border-box;
+}
+
+.form-card input[type="text"],
+.form-card input[type="password"],
+.form-card input[type="date"],
+.form-card input[type="number"],
+.form-card select {
+	width: 100%;
+	padding: 12px 16px;
+	border: 2px solid #e1e5e9;
+	border-radius: 8px;
+	font-size: 16px;
+	background-color: #fff;
+	box-sizing: border-box;
+	transition: border-color 0.3s;
+}
+
+.form-card input:focus,
+.form-card select:focus {
+	outline: none;
+	border-color: #7d8bae;
+}
+
+.data-table {
+	width: 100%;
+	border-collapse: collapse;
+	background: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+	margin-bottom: 1.5rem;
+}
+
+.data-table th,
+.data-table td {
+	padding: 14px 16px;
+	text-align: left;
+}
+
+.data-table th {
+	background-color: #7d8bae;
+	color: white;
+	font-weight: 600;
+}
+
+.data-table tr {
+	border-bottom: 1px solid #eee;
+}
+
+.data-table input[type="text"],
+.data-table input[type="date"],
+.data-table input[type="number"],
+.data-table select {
+	width: 100%;
+	padding: 8px 12px;
+	border: 1px solid #e1e5e9;
+	border-radius: 6px;
+	font-size: 14px;
+	background-color: #fff;
+	box-sizing: border-box;
+	transition: border-color 0.3s;
+}
+
+.data-table input:focus,
+.data-table select:focus {
+	outline: none;
+	border-color: #7d8bae;
+}
+
+main button {
+	display: block;
+	width: 100%;
+	max-width: 400px;
+	margin: 1.5rem auto;
+	padding: 14px;
+	background: linear-gradient(135deg, #7d8bae, #9ba7cb);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	font-weight: 600;
 	cursor: pointer;
 }
-/* 送信ボタン(マウスオーバー時) */
-button:hover {
-	background-color:#7d8bae;
+
+main p {
+	text-align: center;
+	margin: 1rem 0;
 }
 
-/* エラーメッセージ*/
-ul.error{
-	color:red;
-	list-style: none;
-	padding-left: 0;
+main a {
+	color: #7d8bae;
+	text-decoration: none;
+	font-weight: 600;
 }
 
-/* ヘッダー全体を中央寄せの基準にする */
-.header {
-  display: flex;
-  justify-content: center; /* タイトルを正確に真ん中へ */
-  align-items: center;
-  position: relative;      /* ログアウトボタンを右端に浮かせる基準 */
-  padding-left: 20px;      /* 左右の余白を確保 */
-  padding-right: 20px;
+main a:hover {
+	text-decoration: underline;
 }
 
-/* タイトルの余白をリセット（既存の header h1 を上書き） */
-.header .header-title {
-  margin: 10px 0;          /* 左右の auto を 0 にしてズレを防止 */
+header {
+	background-color: #7d8bae;
+	color: #ffffff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 1.5rem 0;
+	width: 100%;
+	position: relative;
 }
 
-/* ログアウトフォームを右端に固定 */
+header h1 {
+	font-size: 20pt;
+	margin: 0 0 10px 0;
+}
+
+header nav,
+header div {
+	display: flex;
+	gap: 1.5rem;
+	justify-content: center;
+}
+
+header a,
+nav a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
 .logout-form {
-  position: absolute;
-  right: 20px;             /* 右端からの距離 */
-  margin: 0;
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0;
 }
 
-/* ログアウトボタン専用のデザイン（共通の button 設定を上書き） */
-.header .logout-button {
-  background: none;        /* ピンクの背景を消す */
-  border: none;
-  color: #ffffff;          /* 文字を白にする */
-  width: auto;             /* 幅150pxを解除して文字幅に合わせる */
-  padding: 0;              /* 内側の余白をリセット */
-  cursor: pointer;
-  text-decoration: underline; /* 下線をつける */
+.logout-button {
+	background: transparent;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	border-radius: 4px;
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s;
 }
 
-/* ログアウトボタンのマウスオーバー時（共通の hover 設定を上書き） */
-.header .logout-button:hover {
-  background: none;        /* ホバー時にピンクになるのを防ぐ */
-  opacity: 0.8;            /* 少し透明にしてクリックできる感を出す */
+.logout-button:hover {
+	background: #ffffff;
+	color: #7d8bae;
 }
+.header-title a {
+	color: rgb(255, 255, 255) !important;   
+	}
 
-/* 名前とパスワードの入力欄を横長にする */
-input[type="text"], 
-input[type="password"] {
-  font-size: 16px;
-  padding: 10px 15px;
-  width: 300px;             /* ★ここを 300px にして横長にしました */
-  max-width: 100%;          /* 画面からはみ出るのを防ぐ */
-  box-sizing: border-box;
-  border: 1px solid #7d8bae;
-  border-radius: 4px;
+.header-title a:hover {
+	color: rgb(128, 255, 255) !important;    
 }
-
-/* 入力欄にカーソルが当たったときの変化 */
-input[type="text"]:focus, 
-input[type="password"]:focus {
-  outline: 2px solid #7d8bae; /* クリックしたときに枠線を強調する */
-  background-color: #f7f9fc;  /* ほんのり背景色を変える */
-}
-

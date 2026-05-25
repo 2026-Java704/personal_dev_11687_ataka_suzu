@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>記録の編集</title>
+	<title>更新</title>
 	<link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -11,13 +11,23 @@
 	<header th:replace="~{title}"></header>
 	<main>
 		<form th:action="@{/past/{pastId}/edit(pastId=${exercise_records.id})}" method="post">
-			<table border="1">
+			
+			<h2 style="text-align: center; margin-top: 0; margin-bottom: 2rem; color: #333; font-weight: 600;">記録の編集</h2>
+
+			
+			<table border="1" class="data-table">
+			
 				<tr>
 					<th>日付</th>
-					<td><input type="date" name="date" th:value="${exercise_records.date}" required></td>
-				</tr>
-				<tr>
 					<th>種目</th>
+					<th>時間（分）</th>
+					<th>体重（kg）</th>
+					<th>感想</th>
+					<th>消費カロリー（kcal）</th>
+				</tr>
+				
+				<tr>
+					<td><input type="date" name="date" th:value="${exercise_records.date}" required></td>
 					<td>
 						<select name="eventId" required>
 							<option th:each="event : ${events}" th:value="${event.id}" th:text="${event.name}"
@@ -25,22 +35,14 @@
 							</option>
 						</select>
 					</td>
-				</tr>
-				<tr>
-					<th>時間</th>
-					<td><input type="number" name="time" min="1" th:value="${exercise_records.time}" required> 分</td>
-				</tr>
-				<tr>
-					<th>体重</th>
-					<td><input type="number" name="weight" min="1" step="0.1" th:value="${exercise_records.weight}"
-							required> kg</td>
-				</tr>
-
-				<tr>
-					<th>消費カロリー</th>
-					<td><input type="text" th:value="${exercise_records.burnCalorie}" readonly> kcal</td>
+					<td><input type="number" name="time" min="1" th:value="${exercise_records.time}" required></td>
+					<td><input type="number" name="weight" min="1" step="0.1" th:value="${exercise_records.weight}" required　placeholder="種目"></td>
+					<td><input type="text" name="memo" th:value="${exercise_records.memo}" ></td>
+					<td><input type="number" name="burnCalorie" min="0" step="0.1" th:value="${exercise_records.burnCalorie}" required></td>
 				</tr>
 			</table>
+
+
 			<br>
 			<button type="submit">更新する</button>
 		</form>

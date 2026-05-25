@@ -12,15 +12,19 @@
 
 	<main>
 		<hr>
-		<h3><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
-		<table border="1">
+		<h3 style="text-align: center;"><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
+
+
+		<table border="1" class="data-table" th:if="${!records.isEmpty()}">
 			<tr>
 				<th>日付</th>
 				<th>種目</th>
 				<th>時間</th>
 				<th>体重</th>
 				<th>消費カロリー</th>
+				<th>感想</th>
 				<th>更新</th>
+				<th>削除</th>
 			</tr>
 			<tr th:each="record : ${records}">
 				<td th:text="${record.date}"></td>
@@ -32,13 +36,43 @@
 				<td th:text="${record.time + ' 分'}"></td>
 				<td th:text="${record.weight + ' kg'}"></td>
 				<td th:text="${'約 ' + record.burnCalorie + 'kcal '}"></td>
+				<td th:text="${record.memo}"></td>
 				<td>
-					<form th:action="@{/past/{pastId}/edit(pastId=${record.id})}" method="get">
-						<button>更新</button>
+					<form th:action="@{/past/{pastId}/edit(pastId=${record.id})}" method="get" style="margin: 0;">
+
+						<button
+							style="width: auto; padding: 6px 12px; font-size: 13px; margin: 0; background: #7d8bae;">更新</button>
+					</form>
+				</td>
+				<td>
+					<form th:action="@{/past/{id}/delete(id=${record.id})}" method="post" style="margin: 0;">
+						<button style="width: auto; padding: 6px 12px; font-size: 13px; margin: 0; background: #7d8bae;"
+							onclick="return confirm('本当に削除しますか？')">削除</button>
 					</form>
 				</td>
 			</tr>
 		</table>
+		<div th:if="${records.isEmpty()}"
+			style="text-align: center; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); margin-bottom: 1.5rem;">
+			<p style="margin: 0; font-size: 16px; color: #7d8bae; font-weight: bold;">過去の記録がありません。</p>
+
+		</div>
+
+
+		<div
+			style="background: rgba(125, 139, 174, 0.1); padding: 15px; border-radius: 8px; text-align: center; margin: 1.5rem 0;">
+			<p style="margin: 0; font-size: 16px; font-weight: bold; color: #4a5568;">
+				これまでの合計消費カロリー：<span th:text="${totalCalorie}"></span> kcal
+			</p>
+		</div>
+
+		<form action="/past/alldelete" method="post" style="text-align: center; margin-top: 1.5rem;">
+
+			<button type="submit" onclick="return confirm('本当に全てのデータをクリアしますか？\nこの操作は取り消せません。')"
+				style="background: none; border: none; color: #ff6b6b; text-decoration: none; font-size: 14px; font-weight: 600; cursor: pointer; padding: 0;">
+				過去のデータをすべてクリアする
+			</button>
+		</form>
 		<p><a href="/records/add">入力画面へ戻る</a></p>
 
 	</main>
