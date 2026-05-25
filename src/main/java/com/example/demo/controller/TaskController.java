@@ -86,7 +86,7 @@ public class TaskController {
 		}
 
 		List<Events> events = eventsRepository.findByUserIdOrderByIdAsc(account.getId());
-		List<Exercise_records> records = exerciseRecordsRepository.findByUserIdOrderByDateDescIdDesc(account.getId());
+		List<Exercise_records> records = exerciseRecordsRepository.findByUserIdOrderByDateAsc(account.getId());
 
 		model.addAttribute("events", events);
 		model.addAttribute("records", records);

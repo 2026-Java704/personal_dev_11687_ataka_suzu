@@ -109,7 +109,7 @@ public class UserController {
 
 		Events event2 = new Events();
 		event2.setUserId(userId);
-		event2.setName("エアロビ");
+		event2.setName("エアロビクス");
 		event2.setMets(7.5);
 		eventsRepository.save(event2);
 

@@ -134,6 +134,7 @@ main a:hover {
 }
 
 header {
+	
 	background-color: #7d8bae;
 	color: #ffffff;
 	display: flex;
@@ -147,7 +148,7 @@ header {
 }
 
 header h1 {
-	font-size: 20pt;
+	font-size: 30pt;
 	margin: 0 0 10px 0;
 }
 
@@ -194,4 +195,20 @@ nav a {
 
 .header-title a:hover {
 	color: rgb(128, 255, 255) !important;    
+}
+.header-title {
+    margin-bottom: 0; 
+}
+
+.header h5 {
+    margin-top: 0;
+}
+
+.header-title {
+    margin-bottom: 0; 
+}
+
+.header h5 {
+    margin-top: 0;   
+    margin-bottom: 0; 
 }

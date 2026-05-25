@@ -4,7 +4,7 @@ VALUES ('demo', 'demo', 20, 0);
 INSERT INTO events(user_id, name, mets)
 VALUES ((SELECT id FROM users WHERE name = 'demo'), '縄跳び', 9.0);
 INSERT INTO events(user_id, name, mets)
-VALUES ((SELECT id FROM users WHERE name = 'demo'), 'エアロビ', 7.5);
+VALUES ((SELECT id FROM users WHERE name = 'demo'), 'エアロビクス', 7.5);
 INSERT INTO events(user_id, name, mets)
 VALUES ((SELECT id FROM users WHERE name = 'demo'), 'スクワット', 5.0);
 INSERT INTO events(user_id, name, mets)
