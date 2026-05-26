@@ -12,7 +12,7 @@
 
 	<main>
 		<hr>
-		<h3 style="text-align: center;"><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
+		<h3 style="text-align: center;"><span th:text="${@account.name} + ' さん'"></span></h3>
 
 
 		<table border="1" class="data-table">
@@ -38,13 +38,14 @@
 			<p th:text=" '約' + ${record.burnCalorie} + 'kcal消費しました！'"
 				style="margin: 0; font-size: 16px; font-weight: bold; color: #4a5568;"></p>
 		</div>
-		<h5>※消費カロリー(kcal) ＝ メッツ(METS) × 体重(kg) × 運動時間(分)/60 × 1.05</h5>
+		<h6>※消費カロリー(kcal) ＝ メッツ(METS) × 体重(kg) × 運動時間(分)/60 × 1.05</h6>
 
 		<p><a href="/records/add">入力画面に戻る</a></p>
 		<p><a href="/past">過去の記録を見る</a></p>
 
 	</main>
-
+	<hr>
+		<footer th:replace="~{footer}"></footer>
 </body>
 
 </html>

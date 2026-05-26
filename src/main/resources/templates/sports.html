@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<header th:replace="~{sporttitle}"></header>
+	<header th:replace="~{sportstitle}"></header>
 
 	<main th:if="${!sportsList.isEmpty()}">
 		<hr>
@@ -37,7 +37,10 @@
 		</table>
 
 		<p><a href="/records/add">入力画面へ戻る</a></p>
+		<p><a href="/past">過去の記録を見る</a></p>
 	</main>
+	<hr>
+		<footer th:replace="~{footer}"></footer>
 </body>
 
 </html>

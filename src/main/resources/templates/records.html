@@ -11,7 +11,7 @@
 	<header th:replace="~{title}"></header>
 	<main>
 		<hr>
-		<h3 style="text-align: center;"><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
+		<h3 style="text-align: center;"><span th:text="${@account.name} + ' さん、こんにちは!'"></span></h3>
 
 		<form action="/records/add" method="post">
 			<h2 style="text-align: center; margin-top: 0; margin-bottom: 2rem; color: #333; font-weight: 600;">運動記録の入力
@@ -29,20 +29,24 @@
 					<td><input type="date" name="date" required></td>
 					<td>
 						<select name="eventId" required>
-							<option value="" disabled selected hidden>種目 </option>
+							<option value="" disabled selected hidden>選択してください</option>
 							<option th:each="event : ${events}" th:value="${event.id}" th:text="${event.name}"></option>
 						</select>
 					</td>
 					<td><input type="number" name="time" min="1" max="999" required></td>
 					<td><input type="number" name="weight" min="1" max="999"step="0.1" required></td>
-					<td><input type="text" name="memo" ></td>
+					<td><input type="text" name="memo" maxlength="20" ></td>
 				</tr>
 			</table>
-			<button>ENTER!!!</button>
+			<button type="submit" class="btn-square">計算</button>
 		</form>
 
 		<p><a href="/past">過去の記録を見る</a></p>
 	</main>
+	<hr>
+		<footer th:replace="~{footer}"></footer>
 </body>
 
 </html>
+
+

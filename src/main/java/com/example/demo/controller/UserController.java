@@ -109,8 +109,8 @@ public class UserController {
 
 		Events event2 = new Events();
 		event2.setUserId(userId);
-		event2.setName("エアロビクス");
-		event2.setMets(7.5);
+		event2.setName("バレーボール");
+		event2.setMets(6.0);
 		eventsRepository.save(event2);
 
 		Events event3 = new Events();
@@ -136,5 +136,17 @@ public class UserController {
 		event6.setName("腹筋");
 		event6.setMets(4.0);
 		eventsRepository.save(event6);
+
+		Events event7 = new Events();
+		event7.setUserId(userId);
+		event7.setName("ランニング");
+		event7.setMets(9.0);
+		eventsRepository.save(event7);
+
+		Events event8 = new Events();
+		event8.setUserId(userId);
+		event8.setName("サイクリング");
+		event8.setMets(8.0);
+		eventsRepository.save(event8);
 	}
 }

@@ -70,7 +70,9 @@ hr {
 .data-table th,
 .data-table td {
 	padding: 14px 16px;
-	text-align: left;
+	text-align: center;
+	white-space: nowrap;
+	padding: 8px 12px;
 }
 
 .data-table th {
@@ -116,6 +118,7 @@ main button {
 	font-size: 16px;
 	font-weight: 600;
 	cursor: pointer;
+	transition: background 0.2s, color 0.2s;
 }
 
 main p {
@@ -211,4 +214,49 @@ nav a {
 .header h5 {
     margin-top: 0;   
     margin-bottom: 0; 
+}
+
+
+.btn-square {
+	display: block;              
+	width: 100%;
+	max-width: 400px;           
+	margin: 2rem auto;          
+	text-decoration: none;
+	background: #7d8bae;       
+	color: #FFF;
+	border: none;              
+	border-bottom: solid 4px #7d8bae;
+	border-radius: 8px;        
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	text-align: center;         
+	box-sizing: border-box;     
+}
+
+.btn-square:active {
+	-webkit-transform: translateY(4px);
+	transform: translateY(4px);
+	border-bottom: none;
+}
+
+.data-table td form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-table td button {
+    display: inline-block !important; 
+    width: auto !important;           
+    margin: 0 !important;
+}
+
+footer {
+	background-color: #7d8bae; /* 背景色 */
+	color: #ffffff; /* 文字色 */
+	padding-top: 5px; /* 内側余白(上) */
+	padding-bottom: 5px; /* 内側余白(下) */
+	text-align: center; 
 }

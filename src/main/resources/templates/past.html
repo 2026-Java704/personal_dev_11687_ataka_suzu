@@ -12,8 +12,9 @@
 
 	<main>
 		<hr>
-		<h3 style="text-align: center;"><span th:text="${@account.name} + ' さん、こんにちは'"></span></h3>
-
+		<h3 style="text-align: center;"><span th:text="${@account.name} + ' さん'"></span></h3>
+		<h2 style="text-align: center; margin-top: 0; margin-bottom: 2rem; color: #333; font-weight: 600;">過去の記録
+					</h2>
 
 		<table border="1" class="data-table" th:if="${!records.isEmpty()}">
 			<tr>
@@ -40,13 +41,14 @@
 				<td>
 					<form th:action="@{/past/{pastId}/edit(pastId=${record.id})}" method="get" style="margin: 0;">
 
-						<button
-							style="width: auto; padding: 6px 12px; font-size: 13px; margin: 0; background: #7d8bae;">更新</button>
+						<button type="submit" class="btn-square"
+							style="width: auto; padding: 4px 12px; font-size: 13px; margin: 0; background: #7d8bae;">更新</button>
 					</form>
 				</td>
 				<td>
 					<form th:action="@{/past/{id}/delete(id=${record.id})}" method="post" style="margin: 0;">
-						<button style="width: auto; padding: 6px 12px; font-size: 13px; margin: 0; background: #7d8bae;"
+						<button type="submit" class="btn-square"
+						style="width: auto; padding: 4px 12px; font-size: 13px; margin: 0; background: #7d8bae;"
 							onclick="return confirm('本当に削除しますか？')">削除</button>
 					</form>
 				</td>
@@ -76,6 +78,8 @@
 		<p><a href="/records/add">入力画面へ戻る</a></p>
 
 	</main>
+	<hr>
+		<footer th:replace="~{footer}"></footer>
 </body>
 
 </html>

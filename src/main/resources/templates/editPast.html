@@ -12,7 +12,7 @@
 	<main>
 		<form th:action="@{/past/{pastId}/edit(pastId=${exercise_records.id})}" method="post">
 			
-			<h2 style="text-align: center; margin-top: 0; margin-bottom: 2rem; color: #333; font-weight: 600;">記録の編集</h2>
+			<h2 style="text-align: center; margin-top: 0; margin-bottom: 2rem; color: #333; font-weight: 600;">記録の更新</h2>
 
 			
 			<table border="1" class="data-table">
@@ -44,9 +44,11 @@
 
 
 			<br>
-			<button type="submit">更新する</button>
+			<button type="submit" class="btn-square">更新</button>
 		</form>
 	</main>
+	<hr>
+		<footer th:replace="~{footer}"></footer>
 </body>
 
 </html>
